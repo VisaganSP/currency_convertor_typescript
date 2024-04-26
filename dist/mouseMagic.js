@@ -8,13 +8,13 @@ var coins = [],
   };
 
 // The Coin object used to scaffold the coins
-var Coin = function () {
+var Coin = function (emoji) {
   this.x = -100; // Initial x position off-screen
   this.y = -100; // Initial y position off-screen
   this.node = (function () {
     var n = document.createElement("div");
     n.className = "coin";
-    n.innerHTML = "🪙"; // Replace dot with coin emoji
+    n.innerHTML = emoji; // Replace dot with coin emoji
     document.body.appendChild(n);
     return n;
   })();
@@ -28,8 +28,9 @@ Coin.prototype.draw = function () {
 };
 
 // Creates the Coin objects, populates the coins array
-for (var i = 0; i < 3; i++) {
-  var c = new Coin();
+var moneyEmojis = ["💰", "💸", "🪙", "🤑", "💵"];
+for (var i = 0; i < 5; i++) {
+  var c = new Coin(moneyEmojis[i]);
   coins.push(c);
 }
 
@@ -47,8 +48,8 @@ function draw() {
     coin.x = x;
     coin.y = y;
     coin.draw();
-    x += (nextCoin.x - coin.x) * 0.6;
-    y += (nextCoin.y - coin.y) * 0.6;
+    x += (nextCoin.x - coin.x) * 0.8;
+    y += (nextCoin.y - coin.y) * 0.8;
   });
 }
 
